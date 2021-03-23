@@ -22,12 +22,12 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="UcenterMember对象", description="会员表")
+@ApiModel(value="UcenterMember对象", description="用户表")
 public class UcenterMember implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "会员id")
+    @ApiModelProperty(value = "用户id")
     @TableId(value = "id", type = IdType.ID_WORKER)
     private String id;
 
