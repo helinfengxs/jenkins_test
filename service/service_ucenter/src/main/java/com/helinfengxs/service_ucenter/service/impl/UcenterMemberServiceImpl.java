@@ -46,7 +46,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         if(!MD5.encrypt(pass).equals(userinfo.getPassword())){
             throw new JenkinsTestException(20001,"登录失败");
         }
-        System.out.println(userinfo.getIsDisabled());
+
         if(userinfo.getIsDisabled()){
             throw new JenkinsTestException(20001,"账号已被禁用");
         }

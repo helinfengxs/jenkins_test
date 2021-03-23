@@ -15,7 +15,7 @@ import java.util.jar.JarException;
 
 /**
  * <p>
- * 会员表 前端控制器
+ * 用户 前端控制器
  * </p>
  *
  * @author helinfeng
@@ -23,17 +23,21 @@ import java.util.jar.JarException;
  */
 @RestController
 @RequestMapping("ucenter-member")
-@Api(description = "用户管理接口")
+@Api(description = "用户管理")
 public class UcenterMemberController {
     @Autowired
     private UcenterMemberService ucenterMemberService;
 
-
+    /**
+     * 登录接口
+     * @param loginVo 账号密码对象
+     * @return 返回token
+     */
     @PostMapping("/login")
     @ApiOperation(value = "登录获取token")
     public R login(@RequestBody LoginVo loginVo){
-        ucenterMemberService.login(loginVo);
-        return R.ok().data("token","xs123ad132afdwqe13212");
+        String token = ucenterMemberService.login(loginVo);
+        return R.ok().data("token",token);
     }
 }
 
