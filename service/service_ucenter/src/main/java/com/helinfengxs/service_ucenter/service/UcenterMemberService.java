@@ -2,6 +2,7 @@ package com.helinfengxs.service_ucenter.service;
 
 import com.helinfengxs.service_ucenter.entity.UcenterMember;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.helinfengxs.service_ucenter.entity.vo.LoginVo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UcenterMemberService extends IService<UcenterMember> {
 
+    String  login(LoginVo loginVo);
 }

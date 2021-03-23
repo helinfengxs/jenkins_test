@@ -19,7 +19,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.helinfengxs</groupId>
+            <artifactId>common-util</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--hystrix依赖，主要是用  @HystrixCommand -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->

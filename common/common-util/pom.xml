@@ -9,13 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-base</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>com.helinfengxs</groupId>
-            <artifactId>common-util</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
+    <artifactId>common-util</artifactId>
+
 
 </project>
