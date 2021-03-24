@@ -7,11 +7,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class JwtUtils {
     //常量
-    public static final long EXPIRE = 1000 * 60 * 60 * 24; //token过期时间
+    public static final long EXPIRE = 1000 * 60 * 60 * 2; //token过期时间
+//    public static final long EXPIRE = 1000 ; //token过期时间
     public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO"; //秘钥
 
     /**
@@ -86,5 +88,16 @@ public class JwtUtils {
         System.out.println(nickname.toString());
         System.out.println(claims.toString());
         return (String)claims.get("id");
+    }
+    public static boolean check(String jwtToken) {
+        if(StringUtils.isEmpty(jwtToken)) return false;
+        try {
+            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

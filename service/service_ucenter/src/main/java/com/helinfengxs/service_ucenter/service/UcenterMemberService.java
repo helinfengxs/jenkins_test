@@ -15,4 +15,6 @@ import com.helinfengxs.service_ucenter.entity.vo.LoginVo;
 public interface UcenterMemberService extends IService<UcenterMember> {
 
     String  login(LoginVo loginVo);
+
+    UcenterMember getUserInfo(String userId);
 }

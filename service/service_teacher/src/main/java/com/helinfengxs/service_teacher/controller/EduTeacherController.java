@@ -38,12 +38,7 @@ public class EduTeacherController {
     @ApiOperation(value = "查询所有老师信息")
     @GetMapping("/teacherlist/{current}/{limit}")
     public Map<String,Object> getTeachList( @PathVariable long current,@PathVariable long limit){
-        System.out.println("11111111111111");
-//        String token = request.getHeader("token");
-//        boolean b = JwtUtils.checkToken(token);
-//        if(!b){
-//            throw new JenkinsTestException(20001,"用户无权限");
-//        }
+
         Page<EduTeacher> pageTeacher = new Page<>(current,limit);
         Map<String, Object> teachMap =  eduTeacherService.getTeacherList(pageTeacher);
         return teachMap;

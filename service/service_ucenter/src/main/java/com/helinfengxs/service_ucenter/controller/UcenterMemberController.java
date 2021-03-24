@@ -51,17 +51,21 @@ public class UcenterMemberController {
     public R getUserInfo(HttpServletRequest request){
         String userToken = JwtUtils.getMemberIdByJwtToken(request);
 
-        boolean isToken = JwtUtils.checkToken(request.getHeader("token"));
-        if (!isToken){
-            throw new JenkinsTestException(20001,"用户无权限");
-        }
-        return R.ok();
+
+        UcenterMember ucenterMember = ucenterMemberService.getUserInfo(userToken);
+        return R.ok().data("userinfo",ucenterMember);
     }
     @GetMapping("/getAllUserInfo/{current}/{limit}")
     @ApiOperation(value = "查询所有用户信息以及老师信息")
     public R getAllInfo(@PathVariable long current,@PathVariable long limit){
         Page<UcenterMember> memberPage = new Page<>(current,limit);
         Map<String, Object> teachList = serviceEduTeacher.getTeachList(current, limit);
+        if (teachList.get("code") !=null){
+            if (teachList.get("code").equals(20001)){
+                throw new JenkinsTestException(20001,"调用查询服务失败");
+            }
+        }
+
         return R.ok().data("teacherList",teachList);
     }
 }

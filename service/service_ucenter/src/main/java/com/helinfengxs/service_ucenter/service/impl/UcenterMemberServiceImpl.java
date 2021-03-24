@@ -54,4 +54,19 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         return JwtUtils.getJwtToken(userinfo.getId(), userinfo.getNickname());
     }
 
+    /**
+     * 根据用户Id得到用户信息
+     * @param userId 用户id
+     * @return 返回用户对象
+     */
+    @Override
+    public UcenterMember getUserInfo(String userId) {
+        QueryWrapper<UcenterMember> wrapper = new QueryWrapper<>();
+        wrapper.eq("id",userId);
+        UcenterMember ucenterMember = baseMapper.selectOne(wrapper);
+        if (ucenterMember == null){
+            throw new JenkinsTestException(20001,"用户不存在");
+        }
+        return ucenterMember;
+    }
 }
